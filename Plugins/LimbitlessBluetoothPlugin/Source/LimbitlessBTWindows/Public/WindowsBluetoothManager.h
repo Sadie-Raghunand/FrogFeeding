@@ -18,8 +18,8 @@ class LIMBITLESSBTWINDOWS_API UWindowsBluetoothManager : public UObject, public 
 {
 	GENERATED_BODY()
 public:
-	virtual void Init() override;
-	void Init(const FString& writeCharacteristic);
+	void CreateWinBLEManager();
+	virtual void Init(const FString& writeCharacteristic) override;
 	virtual void Deinit() override;
 	
 	winrt::guid FStringToWinrtGUID(const FString& fstr) const;
@@ -35,7 +35,7 @@ private:
 	UPROPERTY()
 	TObjectPtr<UWinBLEManager> WinBLEManager;
 
-	TMap<uint64_t, UFlexController*> createdControllers{};
+	TMap<uint64_t, UFlexController*> CreatedControllers{};
 	
 	winrt::guid WriteCharacteristicUUID;
 	
